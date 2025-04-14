@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useForm, SubmitHandler } from "react-hook-form";
 import "./styles.css"
-import { Trash2 } from "lucide-react";
+import { CirclePlus, Trash2 } from "lucide-react";
 export default function Tasks() {
 
     interface Task extends Object {
@@ -9,7 +9,7 @@ export default function Tasks() {
         checked: boolean;
     }
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const [list, setList] = useState<Task | null>(null)
     const [tasks, setTasks] = useState<Task[]>([])
 
@@ -48,31 +48,52 @@ export default function Tasks() {
                         checked: false
                     }
                     setList(newTask);
-                
+                    reset();
                 })}
             >
-                <input {...register("taskDescription", { required: true })} placeholder="Adicione uma nova tarefa" className="new-task"/>
-                <button type="submit" className="create">Criar</button>
+                <input {...register("taskDescription", { required: true })} placeholder="Adicione uma nova tarefa" className="new-task" />
+                <button type="submit" className="create">
+                    Criar
+                    <CirclePlus color="#F2F2F2" size={17}/>
+                    </button>
             </form>
 
             <div>
                 <div className="menu">
-                <div>Tarefas criadas {tasks.length}</div>
-                <div>Concluídas {tasks.filter(task => task.checked).length} de {tasks.length}</div>
+                    <div className="tasks-count">Tarefas criadas <div className="tasks-count-number">{tasks.length}</div></div>
+                    <div className="concluded-tasks">
+                        Concluídas
+                        <div className="concluded-tasks-counter">
+                            {tasks.length === 0 
+                            ? "0" : `${tasks.filter(task => task.checked).length} de ${tasks.length}`}
+                            
+                        </div>
+                    </div>
                 </div>
+                <div className="tasks-display">
+               {tasks.length === 0 
+               ? (
+                <div className="no-tasks">
+                <p className="no-tasks-message">Você ainda não tem tarefas cadastradas.</p>
+                <p className="no-tasks-message-two">Crie tarefas e organize seus itens a fazer.</p>
+              </div>
+               ) : (
                 <div className="items">
+                    
                 <ul>
                     {tasks.map((task, index) => (
                         <li key={index}>
                             <div className={`task-container `}
                             >
                                 <div className="task-content">
-                                <input
-                                    type="checkbox"
-                                    checked={task.checked}
-                                    onChange={() => handleToggleCheck(index)} />
+                                    <input
+                                        type="checkbox"
+                                        checked={task.checked}
+                                        onChange={() => handleToggleCheck(index)}
+                                        className="checker"
+                                    />
 
-                                <span className={`task-description ${task.checked ? "checked" : "unchecked"}`}>{task.taskDescription}</span>
+                                    <span className={`task-description ${task.checked ? "checked" : "unchecked"}`}>{task.taskDescription}</span>
                                 </div>
 
 
@@ -80,14 +101,16 @@ export default function Tasks() {
                                     className="delete"
                                     onClick={() => handleDelete(index)}
                                 >
-                                    <Trash2 size={17} color="#808080"/>
-                                    
+                                    <Trash2 size={17} color="#808080" />
+
                                 </button>
                             </div>
                         </li>
                     ))}
                 </ul>
-                </div>
+            </div>
+               )}
+               </div>
 
             </div>
 
