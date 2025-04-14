@@ -1,0 +1,111 @@
+/* Base Styles */
+body {
+    background-color: #1E1E1E;
+}
+
+/* Task List Container */
+.tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+/* Task Form Styles */
+.task-form {
+    display: flex;
+}
+
+.new-task {
+    transform: translateY(-50%);
+    width: 46rem;
+    height: 3.375rem;
+    border-radius: 8px;
+    border: 0;
+    background-color: #262626;
+    border: solid 0.5px;
+    border-color: #0D0D0D;
+    color: #808080;
+}
+
+.create {
+    transform: translateY(-50%);
+    width: 90px;
+    height: 52px;
+    border-radius: 8px;
+    margin-left: 8px;
+    border: 0;
+    background-color: #1E6F9F;
+}
+
+/* Menu Styles */
+.menu {
+    display: flex;
+    justify-content: space-between;
+    width: 46rem;  
+    color: #F2F2F2; 
+}
+
+/* Task Items Container */
+.items {
+    width: 46rem; 
+    padding-left: 0;
+}
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style-type: none;
+    width: 100%;
+}
+
+/* Individual Task Styles */
+.task-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    width: 736px;
+    height: 72px;
+    background-color: #262626;
+    border: solid 1px;
+    border-radius: 8px;
+}
+
+.task-content {
+    display: flex;
+}
+
+.task-description {
+    display: inline-block;
+    max-width: 632px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    padding: 5px;
+    line-height: 1.5;
+    color: #F2F2F2; 
+    padding-top: 10px;
+    margin-left: 20px;
+}
+
+/* Task States */
+.checked {
+    text-decoration: line-through;
+    opacity: 0.7; 
+}
+
+/* Action Buttons */
+.delete {
+    align-self: start;
+    margin-top: 10px;
+    background: none;
+    border: none;
+    width: 20px;  /* Reduzi de 12px para algo mais clicável */
+    height: 20px; /* Reduzi de 14px */
+    padding-right: 35px;    /* Remove padding extra */
+    padding-top: 10px;    /* Remove padding extra */
+    cursor: pointer;
+    color: #808080; /* Cor do ícone */
+    font-size: 14px; /* Tamanho do ícone */
+}
