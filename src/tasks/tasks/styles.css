@@ -1,6 +1,7 @@
 /* Base Styles */
 body {
     background-color: #1E1E1E;
+    font-family: 'Inter', sans-serif;
 }
 
 /* Task List Container */
@@ -27,6 +28,13 @@ body {
     border-color: #0D0D0D;
     color: #808080;
 }
+.new-task::placeholder {
+    font-family: 'Inter', sans-serif; /* Fonte */
+  font-size: 16px;                /* Tamanho */
+  color: #808080;                    /* Cor */
+  opacity: 1;                     /* Remove transparência padrão em alguns navegadores */
+  padding-left: 10px;  
+}
 
 .create {
     transform: translateY(-50%);
@@ -41,6 +49,12 @@ body {
     align-items: center;
     justify-content: center;
     gap: 5px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+}
+
+.create:hover{
+    background-color: #4EA8DE;
 }
 
 /* Menu Styles */
@@ -49,6 +63,7 @@ body {
     justify-content: space-between;
     width: 46rem;  
     color: #F2F2F2; 
+    font-weight: bold;
 }
 
 /* Task Items Container */
@@ -76,6 +91,8 @@ li {
     background-color: #262626;
     border: solid 1px;
     border-radius: 8px;
+    border-color: #333333;
+    align-items: center;
 }
 
 .task-content {
@@ -87,11 +104,12 @@ li {
     max-width: 632px;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    padding: 5px;
+    
     line-height: 1.5;
     color: #F2F2F2; 
-    padding-top: 1rem;
-    margin-left: 20px;
+    
+    margin-left: 12px;
+    font-size: 14px;
 }
 
 /* Task States */
@@ -103,8 +121,46 @@ li {
 .checker{
     margin-left: 20px;
     margin-bottom: 10px;
-
+    border-radius: 50%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #4EA8DE; /* Borda azul */
+    border-radius: 50%; /* Deixa redondo */
+    background-color: transparent; /* Fundo transparente */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.checker:hover{
+    border-color: #1E6F9F;
+    color: #F2F2F2;
+}
+
+.checker:checked {
+    background-color: #5E60CE; /* Fundo azul */
+    border-color: #5E60CE;
+    color: #F2F2F2;
+}
+.checker:checked:hover{
+    background-color: #8284FA;
+    border-color: #8284FA;
+    color: #F2F2F2;
+}
+
+.checker:checked::after {
+    content: "✔";
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+}
+
 
 .tasks-count{
     color: #4EA8DE;
@@ -147,7 +203,7 @@ li {
     justify-content: center;
     align-items: center;
 
-    padding: 2px 10px; /* 🔽 Reduzi o padding vertical de 4px para 2px */
+    padding: 4px 10px; /* 🔽 Reduzi o padding vertical de 4px para 2px */
     margin-left: 8px;
 
     border-radius: 999px;
@@ -174,25 +230,38 @@ li {
 
 
 .no-tasks-message{
-    margin: 0;
+    margin-top: 16px;
+    margin-bottom: 0;
     font-weight: bold;
+    font-size: 16px;
 }
 .no-tasks-message-two{
     margin: 0;
+    font-size: 16px;
 }
 
 
 /* Action Buttons */
 .delete {
-    align-self: start;
-    margin-top: 10px;
+    display: flex;           /* Ativa flexbox para centralização */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
     background: none;
     border: none;
-    width: 20px;  /* Reduzi de 12px para algo mais clicável */
-    height: 20px; /* Reduzi de 14px */
-    padding-right: 35px;    /* Remove padding extra */
-    padding-top: 10px;    /* Remove padding extra */
+    width: 24px;             /* Largura fixa */
+    height: 24px;            /* Altura fixa */
+    padding: 0;              /* Remove todo o padding */
+    align-self: start;
+    margin-top: 16px;  
+    margin-right: 16px;
     cursor: pointer;
-    color: #808080; /* Cor do ícone */
-    font-size: 14px; /* Tamanho do ícone */
+    color: #808080;
+    border-radius: 4px;      /* Opcional: borda arredondada */
+    transition: background-color 0.2s; /* Efeito suave no hover */
 }
+
+.delete:hover{
+    color: #E25858;
+    background-color: #333333;
+}
+

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useForm, SubmitHandler } from "react-hook-form";
 import "./styles.css"
-import { CirclePlus, Trash2 } from "lucide-react";
+import { Check, CirclePlus, Trash2 } from "lucide-react";
 export default function Tasks() {
 
     interface Task extends Object {
@@ -74,6 +74,7 @@ export default function Tasks() {
                {tasks.length === 0 
                ? (
                 <div className="no-tasks">
+                    <img src="src\assets\Clipboard.png" />
                 <p className="no-tasks-message">Você ainda não tem tarefas cadastradas.</p>
                 <p className="no-tasks-message-two">Crie tarefas e organize seus itens a fazer.</p>
               </div>
@@ -85,13 +86,14 @@ export default function Tasks() {
                         <li key={index}>
                             <div className={`task-container `}
                             >
+                                
                                 <div className="task-content">
                                     <input
                                         type="checkbox"
                                         checked={task.checked}
                                         onChange={() => handleToggleCheck(index)}
                                         className="checker"
-                                    />
+                                    ></input>
 
                                     <span className={`task-description ${task.checked ? "checked" : "unchecked"}`}>{task.taskDescription}</span>
                                 </div>
@@ -101,7 +103,7 @@ export default function Tasks() {
                                     className="delete"
                                     onClick={() => handleDelete(index)}
                                 >
-                                    <Trash2 size={17} color="#808080" />
+                                    <Trash2 size={17} />
 
                                 </button>
                             </div>
