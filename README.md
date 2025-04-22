@@ -2,7 +2,7 @@
 
 Este é um projeto de **Gerenciador de Tarefas** desenvolvido em **React** com integração a uma API REST para armazenamento e manipulação de dados. O aplicativo permite criar, listar, marcar como concluídas e excluir tarefas, além de gerenciar tarefas pendentes em caso de falha de conexão.
 
-![Interface do Gerenciador de Tarefas](src\assets\amostra.png)
+![Interface do Gerenciador de Tarefas](src/assets/amostra.png)
 
 ## 📋 Funcionalidades
 
