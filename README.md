@@ -1,54 +1,41 @@
-# React + TypeScript + Vite
+# Gerenciador de Tarefas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto de **Gerenciador de Tarefas** desenvolvido em **React** com integração a uma API REST para armazenamento e manipulação de dados. O aplicativo permite criar, listar, marcar como concluídas e excluir tarefas, além de gerenciar tarefas pendentes em caso de falha de conexão.
 
-Currently, two official plugins are available:
+![Interface do Gerenciador de Tarefas](src\assets\amostra.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📋 Funcionalidades
 
-## Expanding the ESLint configuration
+- **Criar tarefas**: Adicione novas tarefas com descrições personalizadas.
+- **Listar tarefas**: Visualize todas as tarefas criadas em uma interface organizada.
+- **Concluir tarefas**: Marque tarefas como concluídas com apenas um clique.
+- **Excluir tarefas**: Remova tarefas indesejadas da lista.
+- **Gerenciamento offline**: Tarefas não enviadas devido a falhas de conexão são armazenadas localmente e reenviadas automaticamente quando possível.
+- **Contador de tarefas**: Veja o número total de tarefas criadas e concluídas.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tecnologias Utilizadas
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **React**: Biblioteca para construção da interface de usuário.
+- **React Hook Form**: Para gerenciamento de formulários.
+- **Axios**: Para realizar chamadas HTTP à API.
+- **UUID**: Para geração de identificadores únicos para as tarefas.
+- **Lucide React**: Para ícones modernos e elegantes.
+- **CSS**: Para estilização da interface.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Pré-requisitos
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Node.js instalado na máquina.
+- Rode npx json-server db.server em `http://localhost:3000` isso dará suporte às rotas:
+  - `GET /tasks`: Retorna todas as tarefas.
+  - `POST /tasks`: Cria uma nova tarefa.
+  - `DELETE /tasks/:id`: Exclui uma tarefa específica.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+🗂️ Estrutura do Código
+State Management: Utiliza hooks (useState, useEffect) para gerenciar o estado das tarefas e listas pendentes.
+
+Pendências Offline: Tarefas e exclusões são armazenadas em arrays separados (pendingTasks e pendingDeletes) e reenviadas automaticamente quando a conexão é restabelecida.
+
+Requisições HTTP: Implementadas com axios para realizar operações de CRUD na API.
+
+
+
